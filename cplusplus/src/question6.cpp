@@ -12,15 +12,15 @@ void checkprime(int x){
 		}
 	}
 	if(count<1)
-		cout<<"No not is prime";
+		cout<<"Prime";
 	else{
-		cout <<"no is prime";
+		cout <<"Not Prime";
 	}	
 }
 
 int main(){
 	int num;
-	cout<<"Enter a no.";
+	cout<<"Enter a no. ";
 	cin>>num;
 	checkprime(num);
 	return 0;
