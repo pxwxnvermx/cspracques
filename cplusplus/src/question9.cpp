@@ -3,19 +3,19 @@ using namespace std;
 
 int main()
 {
-    int space, rows;
+    int space, rows ,i ,k;
 
     cout <<"Enter number of rows: ";
     cin >> rows;
 
-    for(int i = 1, k = 0; i <= rows; ++i, k = 0)
+    for(i = 1; i <= rows; ++i, k = 0)
     {
         for(space = 1; space <= rows-i; ++space)
         {
             cout <<"  ";
         }
 
-        for(;k != 2*i-1;++k)
+        for(k = 0;k != 2*i-1;++k)
         {
             cout << "* ";
         }
