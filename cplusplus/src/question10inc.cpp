@@ -1,111 +1,122 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
-void even(int a[],int n)
-    {
-    	cout<<"Even terms are--";
-    	for(int i=0;i<n;i++)
-    	{
-    		if(a[i]%2==0)
-    		  cout<<a[i]<<"  ";
+
+void evenCheck(int a[]){
+	cout << "Even elements : ";
+	for(int i = 0;i<6;i++){
+		if(a[i]%2==0){
+			cout << a[i] << " \n";
 		}
 	}
-void odd(int a[],int n)
-    {
-    	cout<<"Odd terms are--";
-    	for(int i=0;i<n;i++)
-    	{
-    		if(a[i]%2!=0)
-    		  cout<<a[i]<<"  ";
-		}
-	}	
-void operation(int a[],int n)
-{
-     int sum=0;   
-	cout<<"sum of the array is--";
-	for(int i=0;i<n;i++)
-	{
-		sum+=a[i];
-	}
-	cout<<sum<<endl;
-	cout<<"the average of array is---";
-    float avg;
-    avg=sum/n;
 	
 }
-void mami(int a[],int n)
-{
-	int max=a[0];
-	int min=a[0];
-	cout<<"The maximum element is---";
-	for(int i=0;i<n;i++)
-	 {
-	 	if(max<a[i])
-	 	 max=a[i];
-	 }
-	 cout<<max<<endl;
-	 cout<<"The minimum element is ---";
-	for(int i=0;i<n;i++)
-	{
+
+void oddCheck(int a[]){
+	cout << "Odd elements : ";
+	for(int i = 0;i<6;i++){
+		if(a[i]%2==1){
+			cout << a[i] << " \n";
+		}
+	}
+	
+}
+
+void sumAvg(int a[]){
+	cout << "Sum of elements : ";
+	int sum,avg;
+	for(int i = 0;i<6;i++){
+			sum += a[i];
+		}
+	cout << sum  << " \n";
+	cout<<"Average of elements : ";
+	avg = sum /6;
+	cout << avg << " \n";
+}
+
+void maxMin(int a[]){
+	int max,min;
+	max = a[0];
+	min = a[0];
+	cout << "Max element : ";
+	for(int i = 0;i<6;i++){
+		if(max<a[i])
+			max = a[i];
+	}
+	cout << max << endl;
+	cout << "Min element : ";
+	for(int i = 0;i<6;i++){
 		if(min>a[i])
-		min=a[i];
-	} 
-	cout<<min<<endl; 
-}
-void remove(int a[],int n)
-{
+			min = a[i];
+	}
+	cout << min << endl;
 	
 }
-void reverse(int a[],int n)
-{
-	cout<<"reverse of array is----";
-	for(int i=(n-1);i>=0;i--)
-	{
-	  cout<<a[i]<<"  ";
+
+void dupCheck(int a[]){
+  for(int i=0; i<6; i++){
+    	for(int j=i+1;j<6;j++){
+   			if(a[i]==a[j])
+    					
+  		}
+   }	
+}
+
+void reverse(int a[]){
+	cout << "Reverse of the array : ";
+	for(int i = 5;i>=0;i--){
+		cout << a[i] << " \n";
 	}
 }
-int main()
-{
-	int b[20],t,p;
-	int flag=1;
-	cout<<"enter length of array--";
-	cin>>p;
-	cout<<endl<<"eneter elements of array"<<endl;
-	for(int i=0;i<p;i++)
-	 cin>>b[i];
-	while(flag)
-	{
-	cout<<"Enter your choice for array"<<endl;
-	cout<<"1-Enter array again "<<endl;
-	cout<<"2-Print the Even values"<<endl;
-	cout<<"3-print the odd values"<<endl;
-	cout<<"4-To calculate the sum and average"<<endl;
-	cout<<"5-to find maximum and minimum element"<<endl;
-	cout<<"6-to remove duplicates from array"<<endl;
-	cout<<"7-to print array in reverse order"<<endl;
-	cout<<"8-to exit the interface"<<endl;
-	cin>>t;
-	switch(t)
-	{
-		case 1:
-			cout<<"enter the element of array"<<endl;
-			for(int i=0;i<p;i++)
-			 cin>>b[i];
-	    case 2:
-	    	even(b,p);
-	    case 3:
-		    odd(b,p);
-		case 4:
-		    operation(b,p);
-		case 5:
-		    mami(b,p);
-		case 6:
-		    remove(b,p);
-		case 7:
-		    reverse(b,p);
-		case 8:
-		    flag=0;	
-		default:
-		  cout<<"wrong value plz enet valid value";						
+
+int main(){
+	int ch,exit=1;
+	int a[6];
+	while(exit!=0){
+	cout << "Enter 6 elements of the array. ";
+	for(int i = 0;i<6;i++){
+		cin >> a[i];
 	}
-    }
+	cout << "The given array is : ";
+	for(int i = 0;i<6;i++){
+		cout << a[i] << endl;
+	}
+	
+	cout << "Enter 0 to exit. \n";	
+	cout << "Enter 1 for printing even valued elements.\n";
+	cout << "Enter 2 for printing odd valued elements.\n";
+	cout << "Enter 3 for printing sum and average of elements.\n";
+	cout << "Enter 4 for printing max and min elements\n";
+	cout << "Enter 5 for removing the duplicates.\n";
+	cout << "Enter 6 for printing the array in reverse order.\n";
+	
+	cout << "Enter Your Choice :";
+	cin >> ch;
+	
+		switch(ch){
+			case 0:
+				exit = 0;
+				break;
+			case 1:
+				evenCheck(a);
+				break;
+			case 2:
+				oddCheck(a);
+				break;
+			case 3:
+				sumAvg(a);
+				break;
+			case 4:
+				maxMin(a);
+				break;
+			case 5:
+				dupCheck(a);
+				break;
+			case 6:	
+				reverse(a);
+				break;
+			default:
+				exit = 1;					
+		}
+	}
+	return 0;
 }
