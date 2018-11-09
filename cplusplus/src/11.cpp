@@ -1,0 +1,53 @@
+#include <iostream>
+#include <stdio.h>
+#include <string.h>
+
+using namespace std;
+
+int main(int len,char**sttr)
+{
+    char str[len];
+    int i;
+    int freq[26];
+    strcpy(str,*sttr);
+	
+	
+	cout << "You have entered " << len << " arguments:" << "\n"; 
+  
+    for (int i = 0; i < len; ++i) 
+        cout << str[i] << "\n"; 
+
+  
+    for(i=0; i<26; i++)
+    {
+        freq[i] = 0;
+    }
+
+
+    
+    for(i=0; i<len; i++)
+    {
+        
+        if(str[i]>='a' && str[i]<='z')
+        {
+            freq[str[i] - 97]++;
+        }
+        else if(str[i]>='A' && str[i]<='Z')
+        {
+            freq[str[i] - 65]++;
+        }
+    }
+
+   
+    printf("\nFrequency of all characters in the given string: \n");
+    for(i=0; i<26; i++)
+    {
+        
+        if(freq[i] != 0)
+        {
+            printf("'%c' = %d\n", (i + 97), freq[i]);
+        }
+    }
+
+    return 0;
+}
