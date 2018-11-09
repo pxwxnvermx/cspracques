@@ -53,12 +53,24 @@ void maxMin(int a[]){
 }
 
 void dupCheck(int a[]){
-  for(int i=0; i<6; i++){
-    	for(int j=i+1;j<6;j++){
-   			if(a[i]==a[j])
-    					
-  		}
-   }	
+	int j = 0;
+	int n = 6;
+    for (int i=0; i < n; i++){
+        for(int j=0;j<i;j++){
+
+            if(a[i]==a[j]){
+                n--;
+                for (int k=i; k<n; k++){
+                    a[k]=a[k+1];
+                }
+                i--;     // you forgot to decrement i
+            }
+        }
+    }	
+    for(int i = 0;i<n;i++){
+			cout << a[i];
+	}
+	cout << endl;
 }
 
 void reverse(int a[]){
