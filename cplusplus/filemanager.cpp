@@ -5,6 +5,38 @@
 using namespace std;
 
 
+
+int fileSize(char fileName[25]){
+	int size = 0;
+	streampos begin,end;
+  	ifstream myfile (fileName, ios::binary);
+  	begin = myfile.tellg();
+  	myfile.seekg (0, ios::end);
+  	end = myfile.tellg();
+  	myfile.close();
+  	size = (end-begin);
+  	return size;
+}
+
+void fileCheck(){
+	ifstream fileC("files.txt");
+	string name;
+	int sz;
+	cout << "_________________________________\n";
+	while( !fileC.eof() ){
+		fileC >> name >> sz;
+		cout << name << endl;
+	}
+	cout << "_________________________________";
+}
+
+void fileSave(char fileName[25]){
+	int size = 0;
+	ofstream fileS("files.txt",ios::app);
+	size = fileSize(fileName);
+	fileS << endl << fileName << "\t" << size;
+}
+
 void read(char fileName[25]){
 	ifstream fileRead(fileName);
 	
@@ -40,9 +72,8 @@ void edit(char fileName[25],string data){
 		cout << "Cannot open " << fileName << "\nFile Does not exists.";		
 	}
 	
-	fileEdit << data;
+	fileEdit << endl << data;
 }
-
 
 int main(){
 	int ch;
@@ -50,6 +81,7 @@ int main(){
 	cout << "Read File Press 1.\n";
 	cout << "Write to File Press 2.\n";
 	cout << "To edit file Press 3.\n";
+	cout << "To see the files Press 4.\n";
 	cout << "Exit Press 0.\n";
 	cin >> ch;
 	
@@ -73,8 +105,13 @@ int main(){
 			cout << "Enter the data to be entered : ";
 			cin.ignore();
 			getline(cin,data);
-			
-			write(fileName,data);		
+			if((data.size())>40000){
+				cout << "File size is greater than 40kb";
+			}else{
+				write(fileName,data);
+				fileSave(fileName);	
+			}
+	
 			break;
 		case 3:
 			cout << "Enter the name of file to be edited : ";
@@ -85,7 +122,16 @@ int main(){
 			cin.ignore();
 			getline(cin,data);
 			
-			edit(fileName,data);
+			if((data.size())>40000){
+				cout << "File size is greater than 40kb";
+			}else{
+				edit(fileName,data);
+			}
+
+			break;
+		case 4: 
+			cout << "Files\n";
+			fileCheck();
 			break;
 		default:
 			cout << "Wrong Choice entered.";				
