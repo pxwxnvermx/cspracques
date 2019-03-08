@@ -1,3 +1,4 @@
-Cs practicals 
-C++ 
+# Cs practicals
+C++
+JAVA
 Csa
